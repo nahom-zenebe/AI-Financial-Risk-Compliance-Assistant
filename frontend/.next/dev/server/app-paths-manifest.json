@@ -1,5 +1,10 @@
 {
   "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(dashboard)/dashboard/chat/page": "app/(dashboard)/dashboard/chat/page.js",
+  "/(dashboard)/dashboard/documents/page": "app/(dashboard)/dashboard/documents/page.js",
   "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/(dashboard)/dashboard/reports/page": "app/(dashboard)/dashboard/reports/page.js",
+  "/(dashboard)/dashboard/risk/page": "app/(dashboard)/dashboard/risk/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js"
 }
