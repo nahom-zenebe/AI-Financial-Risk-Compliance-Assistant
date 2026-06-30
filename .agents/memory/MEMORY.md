@@ -1,0 +1,5 @@
+- [Next.js version policy](nextjs-version.md) — Next.js 14.x and 15.x blocked by CVE; use 16.2.9+ on this repl.
+- [App Router route groups](nextjs-route-groups.md) — (group) folders are invisible in URLs; need explicit subfolder for named routes.
+- [Full-stack port split](port-split.md) — Backend on :8000 (console workflow), frontend on :5000 (webview); Next.js rewrites proxy /api/*.
+- [Auth security config](auth-security.md) — bcrypt unavailable (version conflict); use sha256_crypt via passlib. Do NOT revert.
+- [Vector store workaround](vector-store.md) — ChromaDB and sentence-transformers firewall-blocked; using JSON+numpy cosine similarity + sklearn TF-IDF.

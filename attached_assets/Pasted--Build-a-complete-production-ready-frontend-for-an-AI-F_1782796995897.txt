@@ -1,0 +1,264 @@
+
+Build a complete production-ready frontend for an AI Financial Risk & Compliance Assistant.
+
+TECH STACK:
+- Next.js 14+ (App Router)
+- TypeScript
+- Tailwind CSS
+- Zustand (state management)
+- JWT authentication (stored in localStorage)
+- Lucide React icons
+- Axios for API calls
+- React Hook Form (optional for forms)
+
+BACKEND:
+- FastAPI backend running separately
+- Base URL: http://localhost:8000
+
+------------------------------------------------------------
+PROJECT GOAL:
+------------------------------------------------------------
+Build a professional AI dashboard frontend where users can:
+
+1. Login/Register using JWT
+2. Upload financial documents (PDF, DOCX, CSV)
+3. Chat with AI (RAG + Gemini backend)
+4. View compliance reports
+5. Analyze transaction risk
+6. View dashboard analytics
+
+------------------------------------------------------------
+PROJECT STRUCTURE:
+------------------------------------------------------------
+
+app/
+  (auth)/
+    login/page.tsx
+    register/page.tsx
+
+  (dashboard)/
+    layout.tsx
+    page.tsx
+
+    documents/
+      page.tsx
+      upload.tsx
+
+    chat/
+      page.tsx
+
+    risk/
+      page.tsx
+
+    reports/
+      page.tsx
+
+components/
+  sidebar.tsx
+  navbar.tsx
+  protected-route.tsx
+
+  ui/
+    button.tsx
+    input.tsx
+    card.tsx
+    table.tsx
+    modal.tsx
+
+store/
+  auth-store.ts
+  chat-store.ts
+  document-store.ts
+
+lib/
+  api.ts
+  axios.ts
+  auth.ts
+
+hooks/
+  useAuth.ts
+
+styles/
+  globals.css
+
+------------------------------------------------------------
+AUTH SYSTEM (JWT):
+------------------------------------------------------------
+
+- Login page sends request to:
+  POST /auth/login
+
+- Response:
+  {
+    access_token: string,
+    user: {
+      id,
+      email,
+      role
+    }
+  }
+
+- Store token in Zustand + localStorage
+
+- Add Axios interceptor:
+  - Attach JWT token to every request
+
+- Protected routes:
+  - redirect to /login if no token
+
+------------------------------------------------------------
+STATE MANAGEMENT (ZUSTAND):
+------------------------------------------------------------
+
+authStore:
+- user
+- token
+- login()
+- logout()
+
+chatStore:
+- messages[]
+- sendMessage()
+- loading
+
+documentStore:
+- documents[]
+- uploadDocument()
+- deleteDocument()
+
+------------------------------------------------------------
+PAGES REQUIREMENTS:
+------------------------------------------------------------
+
+1. LOGIN PAGE:
+- Email + password
+- JWT login
+- Redirect to dashboard
+- Lucide icons
+
+2. DASHBOARD PAGE:
+Show:
+- total documents
+- risk summary
+- compliance score
+- recent activity cards
+
+3. DOCUMENTS PAGE:
+- Upload PDF/DOCX/CSV
+- List documents in table
+- Delete document
+- Show status
+
+4. CHAT PAGE (RAG AI):
+- Chat UI like ChatGPT
+- User sends question
+- Call backend:
+  POST /chat
+- Show:
+  - AI answer
+  - citations (source chunks)
+- Streaming UI optional
+
+5. RISK ANALYSIS PAGE:
+- Form:
+  amount
+  sender
+  receiver
+  country
+- Call:
+  POST /risk/analyze
+- Display:
+  risk level (LOW/MEDIUM/HIGH)
+  explanation
+  score
+
+6. REPORTS PAGE:
+- Show generated reports
+- Download PDF / CSV
+
+------------------------------------------------------------
+UI DESIGN REQUIREMENTS:
+------------------------------------------------------------
+
+- Dark + light mode optional
+- Modern SaaS dashboard style
+- Tailwind CSS only (no UI frameworks like MUI)
+- Use Lucide icons everywhere
+- Responsive design (mobile + desktop)
+
+Examples:
+- Sidebar navigation
+- Cards for analytics
+- Tables for documents
+- Chat UI like ChatGPT
+
+------------------------------------------------------------
+API LAYER:
+------------------------------------------------------------
+
+Create axios instance:
+
+Base URL:
+http://localhost:8000
+
+Attach JWT token:
+
+Authorization: Bearer <token>
+
+Endpoints:
+
+AUTH:
+- POST /auth/login
+- POST /auth/register
+
+DOCUMENTS:
+- GET /documents
+- POST /documents/upload
+- DELETE /documents/{id}
+
+CHAT:
+- POST /chat
+
+RISK:
+- POST /risk/analyze
+
+REPORTS:
+- GET /reports
+
+------------------------------------------------------------
+ZUSTAND EXAMPLE:
+------------------------------------------------------------
+
+authStore:
+- user
+- token
+- setUser()
+- setToken()
+- logout()
+
+------------------------------------------------------------
+FEATURES:
+------------------------------------------------------------
+
+- JWT authentication flow
+- Protected routes
+- Sidebar navigation
+- API integration with FastAPI
+- Chat UI (RAG assistant)
+- File upload UI
+- Dashboard analytics cards
+- Clean reusable components
+- Fully responsive UI
+
+------------------------------------------------------------
+GOAL:
+------------------------------------------------------------
+
+This is an interview-level AI SaaS frontend.
+
+It should look like a real production product:
+- Not a demo
+- Not a tutorial
+- A real enterprise dashboard UI
+
+Use clean architecture and modular components.
