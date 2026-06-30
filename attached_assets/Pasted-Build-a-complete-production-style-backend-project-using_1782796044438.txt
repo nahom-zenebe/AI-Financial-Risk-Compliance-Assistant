@@ -1,0 +1,238 @@
+Build a complete production-style backend project using FastAPI called:
+
+AI Financial Risk & Compliance Assistant (MVP)
+
+TECH STACK:
+- FastAPI (main backend)
+- SQLAlchemy 2.0 (PostgreSQL or SQLite fallback)
+- JWT Authentication (role-based access: admin, compliance_officer, auditor)
+- Google Gemini API (LLM for RAG answers + compliance explanations)
+- ChromaDB (vector database for RAG)
+- PyPDF, python-docx, pandas (document parsing)
+- sentence-transformers or Gemini embeddings
+- pydantic schemas
+- alembic optional
+- uvicorn server
+
+------------------------------------------------------------
+PROJECT GOAL:
+------------------------------------------------------------
+Build an AI system that:
+
+1. Allows users to upload financial/compliance documents (PDF, DOCX, CSV)
+2. Extracts and chunks documents
+3. Stores embeddings in ChromaDB
+4. Lets users chat with documents using RAG + Gemini
+5. Analyzes financial transactions for risk scoring
+6. Checks compliance violations in uploaded documents
+7. Generates reports (PDF/CSV)
+8. Tracks audit logs of user actions
+
+------------------------------------------------------------
+FEATURES (MVP):
+------------------------------------------------------------
+
+1. AUTH SYSTEM:
+- Register user
+- Login user
+- JWT authentication
+- Role-based access control:
+  - admin
+  - compliance_officer
+  - auditor
+
+2. DOCUMENT MANAGEMENT:
+- Upload PDF/DOCX/CSV
+- Save metadata in SQL database
+- Extract text from documents
+- Delete document
+- List documents
+
+3. RAG PIPELINE (IMPORTANT):
+- Chunk documents (200–500 tokens)
+- Generate embeddings
+- Store in ChromaDB collection: "financial_docs"
+- Each chunk must store metadata:
+  - document_id
+  - filename
+  - page number (if available)
+  - category
+- Implement hybrid retrieval:
+  - vector similarity search
+  - metadata filtering
+- Return source citations with answers
+
+4. AI CHAT (Gemini + RAG):
+Endpoint: /chat
+- Input: user question
+- Retrieve top-k relevant chunks from ChromaDB
+- Build prompt with context
+- Send to Google Gemini API
+- Return:
+  - answer
+  - citations
+  - confidence score
+
+Example questions:
+- Does this transaction violate AML policy?
+- What are KYC requirements?
+- Explain compliance regulation in this document.
+
+5. TRANSACTION RISK ANALYSIS:
+Endpoint: /risk/analyze
+- Input: transaction data (amount, sender, receiver, country)
+- Apply:
+  - rule-based checks (high amount, risky country)
+  - simple ML placeholder model (can be dummy logistic regression)
+- Output:
+  - risk level (LOW, MEDIUM, HIGH)
+  - risk score (0–1)
+  - explanation
+
+6. COMPLIANCE CHECKER:
+- Analyze uploaded documents
+- Detect:
+  - missing fields
+  - inconsistent values
+  - duplicate records
+  - suspicious terms
+- Use Gemini to generate:
+  - compliance summary
+  - violations list
+  - recommendations
+
+7. DASHBOARD ENDPOINTS:
+- total documents
+- total transactions
+- high-risk count
+- compliance score overview
+- recent uploads
+
+8. REPORT GENERATION:
+- Generate:
+  - PDF report (reportlab or fpdf)
+  - CSV export (pandas)
+- Include:
+  - compliance summary
+  - risk analysis
+  - AI insights
+
+9. AUDIT LOGGING:
+- Log every user action:
+  - login
+  - upload document
+  - chat request
+  - risk analysis request
+
+------------------------------------------------------------
+PROJECT STRUCTURE:
+------------------------------------------------------------
+
+app/
+  main.py
+
+  core/
+    config.py
+    security.py
+    database.py
+
+  models/
+    user.py
+    document.py
+    transaction.py
+    audit.py
+
+  schemas/
+    user.py
+    document.py
+    chat.py
+    risk.py
+
+  api/
+    auth.py
+    documents.py
+    chat.py
+    risk.py
+    dashboard.py
+
+  services/
+    gemini_service.py
+    rag_service.py
+    chroma_service.py
+    compliance_service.py
+
+  rag/
+    loader.py
+    splitter.py
+    embedder.py
+
+  utils/
+    pdf.py
+    docx.py
+    csv.py
+
+------------------------------------------------------------
+RAG REQUIREMENTS:
+------------------------------------------------------------
+Use ChromaDB:
+
+- Collection name: financial_docs
+- Store embeddings with metadata
+- Retrieval:
+    top_k = 5
+- Always return:
+    source document name
+    chunk text
+    page number (if exists)
+
+Prompt format for Gemini:
+
+SYSTEM:
+You are a financial compliance AI assistant.
+
+CONTEXT:
+{retrieved_chunks}
+
+QUESTION:
+{user_question}
+
+RULES:
+- Always use only provided context
+- If unsure, say "insufficient information"
+- Always cite sources
+
+------------------------------------------------------------
+GEMINI INTEGRATION:
+------------------------------------------------------------
+Use Google Gemini API:
+- gemini-1.5-pro or latest
+- streaming optional
+
+Wrapper:
+- generate_response(prompt: str) -> str
+
+------------------------------------------------------------
+RISK ANALYSIS RULES:
+------------------------------------------------------------
+Rule-based checks:
+- amount > 10,000 → medium risk
+- amount > 50,000 → high risk
+- country in [high risk countries list] → high risk
+- sender == receiver → suspicious
+
+------------------------------------------------------------
+OUTPUT REQUIREMENTS:
+------------------------------------------------------------
+- Clean modular code
+- Fully working FastAPI server
+- Ready to run with uvicorn main:app --reload
+- Include .env support
+- Include sample data
+- Include clear comments
+- No pseudocode — real implementation
+
+------------------------------------------------------------
+GOAL:
+------------------------------------------------------------
+This is an interview-level AI Engineering project.
+Make it production-quality, modular, and scalable.
