@@ -1,135 +1,179 @@
-AI Financial Risk & Compliance Assistant
+# AI Financial Risk & Compliance Assistant
 
-The MVP should be something you can build in 4–6 weeks and demonstrate in interviews.
+An AI-powered system for financial document analysis, compliance checking, transaction risk scoring, and intelligent Q&A using RAG (Retrieval-Augmented Generation) with Google Gemini.
 
-1. Authentication & User Management
-User registration and login
-JWT authentication
-Role-based access (Admin, Compliance Officer, Auditor)
-User profile
-2. Document Management
-Upload PDF
-Upload Word documents
-Upload CSV files
-View uploaded documents
-Delete documents
-Search documents
-Document metadata
-Automatic document categorization
-3. RAG Knowledge Base
-Parse documents
-Semantic chunking
-Generate embeddings
-Store vectors
-Metadata indexing
-Hybrid search
-Source citations
-Document versioning
-4. AI Compliance Chat
+---
 
-Ask questions like
+# 🚀 Project Overview
 
-Does this transaction violate AML policy?
+This system helps financial institutions:
 
-What are the KYC requirements?
+- Upload and manage documents
+- Chat with financial regulations using AI
+- Detect transaction fraud and risk
+- Automatically generate compliance reports
+- Analyze financial data using ML + LLMs
 
-Explain this regulation.
+---
 
-Features
+# 🧠 Core Features
 
-Natural language Q&A
-Context-aware retrieval
-Citation of document sections
-Confidence score
-Follow-up questions
-Conversation history
-5. Transaction Risk Analysis
+## 1. Authentication & User Management
+- User registration & login
+- JWT authentication
+- Role-based access:
+  - Admin
+  - Compliance Officer
+  - Auditor
+- User profile management
 
-Upload transactions.
+---
 
-System predicts
+## 2. Document Management
+- Upload PDF, DOCX, CSV files
+- View uploaded documents
+- Delete documents
+- Search documents
+- Store document metadata
+- Auto document categorization
 
-High Risk
-Medium Risk
-Low Risk
+---
 
-Features
+## 3. RAG Knowledge Base
+- Parse documents into text
+- Semantic chunking
+- Generate embeddings
+- Store vectors in ChromaDB
+- Metadata indexing
+- Hybrid search (vector + keyword)
+- Source citations in responses
+- Document versioning
 
-Transaction scoring
-Risk explanation
-Highlight suspicious fields
-Rule-based detection
-ML-based prediction
-6. Compliance Checker
+---
 
-Analyze uploaded reports.
+## 4. AI Compliance Chat (RAG + Gemini)
+Ask questions like:
+- Does this transaction violate AML policy?
+- What are KYC requirements?
+- Explain this regulation
 
-Detect
+Features:
+- Natural language Q&A
+- Context-aware retrieval
+- Source citations
+- Confidence score
+- Conversation history
+- Follow-up questions
 
-Missing information
-Compliance violations
-Inconsistent values
-Duplicate records
-Invalid formats
+---
 
-Generate
+## 5. Transaction Risk Analysis
+Upload transaction data and get:
 
-Compliance report
-Risk score
-Improvement suggestions
-7. Dashboard
+- Risk Level: LOW / MEDIUM / HIGH
+- Risk Score (0–1)
+- Explanation of prediction
+- Highlight suspicious fields
 
-Display
+Methods:
+- Rule-based detection
+- ML-based prediction
 
-Total documents
-Compliance status
-High-risk transactions
-Risk distribution
-Recent uploads
-AI usage statistics
-8. Reporting
+---
 
-Generate
+## 6. Compliance Checker
+Analyze financial reports and detect:
 
-PDF report
-CSV export
-Compliance summary
-Audit report
-9. Machine Learning
+- Missing information
+- Compliance violations
+- Duplicate records
+- Inconsistent values
+- Invalid formats
 
-Models
+Output:
+- Compliance report
+- Risk score
+- Recommendations
 
-Fraud Detection
-Risk Classification
-Anomaly Detection
+---
 
-Evaluation
+## 7. Dashboard
+Displays:
 
-Accuracy
-Precision
-Recall
-F1
-ROC-AUC
-10. Backend
-FastAPI
-PostgreSQL
-Qdrant
-Redis
-Celery
+- Total documents uploaded
+- Compliance status overview
+- High-risk transactions
+- Risk distribution charts
+- Recent uploads
+- AI usage statistics
 
+---
 
-Frontend: React / Next.js
-Backend: FastAPI
-LLM: Google Gemini
-Vector Database: ChromaDB
-Database: PostgreSQL
-Cache: Redis (optional)
-Authentication: JWT
-Storage: Local Storage / S3 / Google Cloud Storage
+## 8. Reporting System
+Generate:
 
+- PDF reports
+- CSV exports
+- Compliance summaries
+- Audit reports
 
+---
 
+## 9. Machine Learning Models
+Used for:
 
+- Fraud detection
+- Risk classification
+- Anomaly detection
+
+Evaluation metrics:
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- ROC-AUC
+
+---
+
+## 10. Backend Architecture
+Built with:
+
+- FastAPI
+- PostgreSQL
+- ChromaDB (Vector DB)
+- Redis (Caching / optional)
+- Celery (Background tasks)
+
+---
+
+## 🤖 Tech Stack
+
+### Frontend
+- React / Next.js
+
+### Backend
+- FastAPI
+
+### AI / LLM
+- Google Gemini API
+
+### Vector Database
+- ChromaDB
+
+### Database
+- PostgreSQL
+
+### Cache
+- Redis (optional)
+
+### Storage
+- Local / AWS S3 / Google Cloud Storage
+
+---
+
+# 📁 Project Structure
+
+```text
 app/
 │
 ├── main.py
