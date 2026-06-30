@@ -1,0 +1,37 @@
+# FastAPI & server
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# Gemini (Google Generative AI)
+google-generativeai==0.8.3
+
+# Vector DB
+chromadb==0.5.5
+
+# Embeddings / chunking utilities
+langchain==0.3.1
+langchain-community==0.3.1
+langchain-google-genai==2.0.1
+tiktoken==0.7.0
+
+# Document loaders
+pypdf==4.3.1
+python-docx==1.1.2
+unstructured==0.15.13
+
+# Data handling
+numpy==1.26.4
+pandas==2.2.2
+
+# Env management
+python-dotenv==1.0.1
+
+# Testing
+pytest==8.3.3
+httpx==0.27.2
+
+# Optional: reranking (cross-encoder)
+sentence-transformers==3.1.1
